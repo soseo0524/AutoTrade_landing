@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import AISearch from './pages/AISearch';
+import AllParts from './pages/AllParts';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/ai-search" element={<AISearch />} />
+            <Route path="/all-parts" element={<AllParts />} />
           </Routes>
         </div>
       </div>

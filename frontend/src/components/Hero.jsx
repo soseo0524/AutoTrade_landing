@@ -67,7 +67,8 @@ const Hero = ({ onOpenContract }) => {
                     <motion.button
                         whileHover={{ scale: 1.05, y: -5 }}
                         whileTap={{ scale: 0.95 }}
-                        className="group relative w-[240px] h-[120px] rounded-[2rem] bg-white/5 backdrop-blur-sm border-none transition-all duration-500 overflow-hidden flex flex-col items-center justify-center p-4 text-left hover:shadow-[0_0_50px_rgba(236,72,153,0.25)] hover:bg-white/10"
+                        onClick={() => navigate('/all-parts')}
+                        className="group relative w-[240px] h-[120px] rounded-[2rem] bg-white/5 backdrop-blur-sm border-none transition-all duration-500 overflow-hidden flex flex-col items-center justify-center p-4 text-left hover:shadow-[0_0_50px_rgba(236,72,153,0.25)] hover:bg-white/10 cursor-pointer"
                     >
                         <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-transparent to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
