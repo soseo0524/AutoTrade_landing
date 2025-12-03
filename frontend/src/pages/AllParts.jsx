@@ -8,11 +8,10 @@ const AllParts = () => {
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const [parts, setParts] = useState([
-    { id: 1, name: 'Porsche 911 GT3 RS Wing - Ultra Lightweight Carbon Edition', date: '2025-12-03', price: '₩4,500,000', image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200', status: 'New' },
-    { id: 2, name: 'Brembo Carbon Ceramic Brakes', date: '2025-12-02', price: '₩12,000,000', image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200', status: 'New' },
-    { id: 3, name: 'BMW M4 CSL Laser Taillights', date: '2025-12-01', price: '₩3,200,000', image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200', status: 'Used' },
-    { id: 4, name: 'Audi RS6 Akrapovic Exhaust', date: '2025-11-30', price: '₩8,900,000', image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200', status: 'New' },
-    { id: 5, name: 'Mercedes AMG GT Grille', date: '2025-11-29', price: '₩1,500,000', image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200', status: 'Used' },
+    { id: 1, name: 'Brembo Carbon Ceramic Brakes', date: '2025-12-02', price: '₩12,000,000', image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200', status: 'New' },
+    { id: 2, name: 'BMW M4 CSL Laser Taillights', date: '2025-12-01', price: '₩3,200,000', image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200', status: 'Used' },
+    { id: 3, name: 'Audi RS6 Akrapovic Exhaust', date: '2025-11-30', price: '₩8,900,000', image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200', status: 'New' },
+    { id: 4, name: 'Mercedes AMG GT Grille', date: '2025-11-29', price: '₩1,500,000', image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200', status: 'Used' },
   ]);
 
   const handleRefresh = () => {
@@ -72,7 +71,7 @@ const AllParts = () => {
               className="flex items-center gap-6"
             >
               {/* 3. Add 버튼: 리스트 사각형 왼쪽, 칸 밖 */}
-              <button className="flex flex-col items-center justify-center gap-1 w-20 h-20 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors -ml-24">
+              <button className="flex flex-col items-center justify-center gap-1 w-20 h-20 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors -ml-28">
                 <ShoppingCart className="w-7 h-7 text-white" />
                 <span className="text-xs font-medium text-gray-300">
                   Add
