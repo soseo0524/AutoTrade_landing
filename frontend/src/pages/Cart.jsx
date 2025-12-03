@@ -55,7 +55,7 @@ const Cart = () => {
 
             {/* 메인 컨텐츠 영역 */}
             <div className="w-3/5 mx-auto">
-                <h1 className="text-4xl font-bold mb-8 flex items-center gap-3">
+                <h1 className="text-4xl font-bold mb-8 flex items-center justify-center gap-3">
                     Your Cart 
                     <span className="text-xl font-normal text-gray-500">({cartItems.length} items)</span>
                 </h1>
