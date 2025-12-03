@@ -74,7 +74,7 @@ const AIChat = ({ isOpen, onClose }) => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
                     />
 
                     {/* Chat Window */}
@@ -82,7 +82,7 @@ const AIChat = ({ isOpen, onClose }) => {
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        className="fixed inset-0 md:inset-auto md:top-[10%] md:left-1/2 md:-translate-x-1/2 md:w-[700px] md:h-[80vh] bg-[#09090b]/90 backdrop-blur-xl border border-white/10 md:rounded-[2rem] shadow-2xl z-50 flex flex-col overflow-hidden"
+                        className="fixed inset-0 md:inset-auto md:top-[10%] md:left-1/2 md:-translate-x-1/2 md:w-[700px] md:h-[80vh] bg-[#09090b]/90 backdrop-blur-xl border border-white/10 md:rounded-[2rem] shadow-2xl z-[100] flex flex-col overflow-hidden"
                     >
                         {/* Header */}
                         <div className="flex items-center justify-between p-6 border-b border-white/5 bg-white/[0.02]">
