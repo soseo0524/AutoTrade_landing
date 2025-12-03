@@ -11,7 +11,15 @@ const MyPage = () => {
             <div className="w-3/5 mx-auto mb-20 text-center relative">
                 <button
                     onClick={() => navigate('/')}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center text-gray-400 hover:text-white transition-colors"
+                    style={{
+                        position: 'fixed',
+                        top: '53.15625px',
+                        left: '20%',
+                        width: '69.640625px',
+                        height: '30px',
+                        zIndex: 50
+                    }}
+                    className="flex items-center text-gray-400 hover:text-white transition-colors"
                 >
                     <ArrowLeft className="w-5 h-5 mr-2" />
                     Back
