@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Cart = () => {
     const navigate = useNavigate();
 
-    // [기능 추가] 가상의 장바구니 데이터
     const [cartItems, setCartItems] = useState([
         { 
             id: 1, 
@@ -24,19 +23,15 @@ const Cart = () => {
         },
     ]);
 
-    // 삭제 기능
     const removeItem = (id) => {
         setCartItems(cartItems.filter(item => item.id !== id));
     };
 
-    // 총 가격 계산
     const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
 
     return (
-        // [수정 포인트 1] pt-44: 상단 여백을 많이 주어 박스를 아래로 내림
         <div className="min-h-screen text-white pt-44 pb-20 relative overflow-y-auto">
             
-            {/* 뒤로가기 버튼 (원래 코드의 위치 스타일 유지) */}
             <button
                 onClick={() => navigate('/')}
                 style={{
@@ -53,18 +48,18 @@ const Cart = () => {
                 Back
             </button>
 
-            {/* 메인 컨텐츠 영역 */}
             <div className="w-3/5 mx-auto">
+                {/* [수정 1] justify-center 추가: 제목 중앙 정렬 */}
                 <h1 className="text-4xl font-bold mb-8 flex items-center justify-center gap-3">
                     Your Cart 
                     <span className="text-xl font-normal text-gray-500">({cartItems.length} items)</span>
                 </h1>
 
-                {/* 장바구니가 비었는지 확인하는 조건문 */}
                 {cartItems.length > 0 ? (
-                    <div className="flex flex-col lg:flex-row gap-8">
+                    // [수정 2] gap-12: 휴지통 버튼 공간 확보를 위해 리스트와 요약창 사이 간격을 넓힘
+                    <div className="flex flex-col lg:flex-row gap-12">
                         
-                        {/* [왼쪽] 상품 리스트 */}
+                        {/* 리스트 영역 */}
                         <div className="flex-1 flex flex-col gap-4">
                             <AnimatePresence>
                                 {cartItems.map((item) => (
@@ -73,7 +68,8 @@ const Cart = () => {
                                         initial={{ opacity: 0, height: 0 }}
                                         animate={{ opacity: 1, height: 'auto' }}
                                         exit={{ opacity: 0, height: 0, marginBottom: 0 }}
-                                        className="flex gap-6 p-4 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 items-center hover:bg-white/10 transition-colors"
+                                        // relative 추가: 휴지통 버튼 위치 기준점
+                                        className="relative flex gap-6 p-4 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 items-center hover:bg-white/10 transition-colors"
                                     >
                                         {/* 이미지 */}
                                         <div className="w-24 h-24 rounded-2xl overflow-hidden bg-gray-800 flex-shrink-0">
@@ -89,10 +85,12 @@ const Cart = () => {
                                             </p>
                                         </div>
 
-                                        {/* 삭제 버튼 */}
+                                        {/* [수정 3] 휴지통 버튼: 박스 오른쪽 바깥으로 이동 */}
+                                        {/* absolute -right-12: 오른쪽으로 48px 밖으로 밀어냄 */}
                                         <button 
                                             onClick={() => removeItem(item.id)}
-                                            className="p-3 text-gray-500 hover:text-red-400 hover:bg-red-400/10 rounded-full transition-colors"
+                                            className="absolute -right-12 top-1/2 -translate-y-1/2 p-2 text-gray-500 hover:text-red-400 transition-colors"
+                                            title="Remove item"
                                         >
                                             <Trash2 className="w-5 h-5" />
                                         </button>
@@ -101,7 +99,7 @@ const Cart = () => {
                             </AnimatePresence>
                         </div>
 
-                        {/* [오른쪽] 결제 요약 창 */}
+                        {/* 요약 창 */}
                         <div className="lg:w-80 h-fit p-6 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 sticky top-24">
                             <h2 className="text-xl font-bold mb-6">Order Summary</h2>
                             <div className="space-y-4 mb-6">
@@ -126,7 +124,7 @@ const Cart = () => {
                         </div>
                     </div>
                 ) : (
-                    // [장바구니가 비었을 때 보여줄 화면 (원래 코드 디자인 활용)]
+                    // 빈 장바구니 화면
                     <div className="w-full p-16 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 text-center mt-10">
                         <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gray-700/50 flex items-center justify-center">
                             <ShoppingBag className="w-10 h-10 text-gray-400" />
