@@ -74,7 +74,7 @@ const AllParts = () => {
                             {/* [수정 2] Add 버튼 */}
                             {/* -left-32: 박스 왼쪽 끝에서 128px만큼 밖으로 밀어냄 */}
                             {/* w-24: 버튼 너비를 조금 더 넓게 잡아 안정감 있게 만듦 */}
-                            <button className="absolute -left-32 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-1 w-24 h-24 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group-hover:bg-white/20">
+                            <button className="absolute -left-56 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-1 w-24 h-24 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group-hover:bg-white/20">
                                 <ShoppingCart className="w-6 h-6 text-white" />
                                 <span className="text-xs font-medium text-gray-300 group-hover:text-white">Add</span>
                             </button>
