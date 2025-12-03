@@ -65,7 +65,8 @@ const AllParts = () => {
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9 }}
-                            // relative: 자식요소(날짜/버튼)의 기준점
+                            // [변경점 1] relative 추가: 내부의 날짜/버튼을 절대위치로 잡기 위함
+                            // items-center로 이미지와 텍스트 수직 정렬 맞춤
                             className="group relative flex items-center gap-6 p-4 rounded-2xl bg-[#18181b] border border-white/5 hover:border-white/10 transition-all hover:bg-[#202023]"
                         >
                             {/* 1. 이미지 */}
@@ -77,8 +78,7 @@ const AllParts = () => {
                             </div>
 
                             {/* 2. 텍스트 내용 */}
-                            {/* pr-[160px]: 오른쪽 날짜/버튼 공간만큼 글자를 미리 끊어줌 (겹침 방지) */}
-                            {/* border-l, border-r 같은 테두리 클래스 절대 없음 */}
+                            {/* [변경점 2] pr-[160px]: 오른쪽 160px 공간을 비워둬서 글자가 버튼/날짜와 겹치지 않게 함 */}
                             <div className="flex-1 min-w-0 pr-[160px]"> 
                                 <h3 className="text-xl font-semibold truncate mb-2">{part.name}</h3>
                                 <p className="text-gray-400 text-sm mb-3 line-clamp-2">
@@ -87,12 +87,17 @@ const AllParts = () => {
                                 <span className="text-2xl font-bold text-blue-400">{part.price}</span>
                             </div>
 
-                            {/* 3. 날짜 고정 (Absolute) - 우측 상단 */}
+                            {/* [변경점 3] 흰색 선 제거됨 (div 자체를 없애고 내용물만 따로 배치) */}
+
+                            {/* [변경점 4] 날짜 고정 (Absolute) */}
+                            {/* top-4, right-4: 카드 오른쪽 위 모서리에 고정 */}
                             <span className="absolute top-4 right-4 text-sm text-gray-500 font-mono">
                                 {part.date}
                             </span>
 
-                            {/* 4. 버튼 고정 (Absolute) - 우측 하단 */}
+                            {/* [변경점 5] 버튼 고정 (Absolute) */}
+                            {/* bottom-4, right-4: 카드 오른쪽 아래 모서리에 고정 */}
+                            {/* w-32: 버튼 너비 고정 */}
                             <button className="absolute bottom-4 right-4 flex items-center justify-center gap-2 w-32 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm font-medium transition-colors">
                                 <ShoppingCart className="w-4 h-4" />
                                 Add
