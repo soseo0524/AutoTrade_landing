@@ -8,12 +8,7 @@ const Hero = ({ onOpenContract }) => {
 
     return (
         <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-20">
-            {/* Background Elements */}
-            <div className="absolute inset-0 bg-[#09090b]">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20 mix-blend-overlay" />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-transparent to-[#09090b]" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#09090b] via-transparent to-[#09090b]" />
-            </div>
+            {/* Background Elements - Moved to App.jsx */}
 
             {/* Content Container */}
             <div className="relative z-10 w-full max-w-[1800px] mx-auto px-4 md:px-8 flex flex-col items-center">
@@ -26,11 +21,7 @@ const Hero = ({ onOpenContract }) => {
                     className="text-center mb-[100px]"
                 >
                     <h1 className="text-7xl md:text-[10rem] font-bold text-white mb-8 tracking-tighter leading-none">
-                        Automated<br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
-                            Auto Parts
-                        </span><br />
-                        Trading
+                        Automated auto Parts Trading
                     </h1>
                     <p className="text-xl md:text-3xl text-gray-400 font-light tracking-wide max-w-3xl mx-auto">
                         자동차 물품 거래의 새로운 기준

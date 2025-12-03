@@ -8,7 +8,7 @@ function Home() {
     const [isContractOpen, setIsContractOpen] = useState(false);
 
     return (
-        <div className="min-h-screen bg-secondary text-white font-sans selection:bg-primary selection:text-white">
+        <div className="min-h-screen text-white font-sans selection:bg-primary selection:text-white">
             <Navbar onOpenChat={() => window.location.href = '/ai-search'} />
             <main>
                 <Hero

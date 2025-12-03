@@ -58,13 +58,8 @@ const AISearch = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#09090b] text-white flex flex-col relative overflow-hidden">
-            {/* Background Elements */}
-            <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-40" />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-transparent to-[#09090b]" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#09090b] via-transparent to-[#09090b]" />
-            </div>
+        <div className="min-h-screen text-white flex flex-col relative overflow-hidden">
+            {/* Background Elements - Moved to App.jsx */}
 
             {/* Close Button (Top Right) */}
             <div className="absolute top-6 right-6 z-20">
