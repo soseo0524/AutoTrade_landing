@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import MyGarage from './pages/MyGarage';
+import AISearch from './pages/AISearch';
 
 function App() {
   return (
@@ -19,7 +19,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/ai-search" element={<AISearch />} />
-            <Route path="/my-garage" element={<MyGarage />} />
           </Routes>
         </div>
       </div>
