@@ -1,48 +1,49 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Clock, Car, Grid } from 'lucide-react';
+import { Sparkles, Car, ShoppingBag, ArrowRight, Grid } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-const Hero = ({ onOpenChat, onOpenContract }) => {
+const Hero = ({ onOpenContract }) => {
+    const navigate = useNavigate();
+
     return (
-        <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#09090b] pt-16">
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0">
-                <img
-                    src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1983&auto=format&fit=crop"
-                    alt="Car Background"
-                    className="w-full h-full object-cover opacity-20"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-[#09090b]/80 to-[#09090b]" />
+        <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-20">
+            {/* Background Elements */}
+            <div className="absolute inset-0 bg-[#09090b]">
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20 mix-blend-overlay" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-transparent to-[#09090b]" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#09090b] via-transparent to-[#09090b]" />
             </div>
 
-            {/* Sophisticated Background Effects */}
-            <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-blue-500/10 rounded-full blur-[150px] animate-pulse" style={{ animationDuration: '4s' }} />
-                <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-indigo-500/10 rounded-full blur-[150px] animate-pulse" style={{ animationDuration: '6s' }} />
-                <div className="absolute top-[20%] left-[20%] w-[60%] h-[60%] bg-white/[0.02] rotate-12 blur-3xl pointer-events-none" />
-            </div>
+            {/* Content Container */}
+            <div className="relative z-10 w-full max-w-[1800px] mx-auto px-4 md:px-8 flex flex-col items-center">
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center justify-center min-h-[80vh]">
+                {/* Main Title */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="text-center mb-[100px] mt-10"
+                    className="text-center mb-[100px]"
                 >
                     <h1 className="text-7xl md:text-[10rem] font-bold text-white mb-8 tracking-tighter leading-none">
-                        Automated Auto Parts Trading
+                        Automated<br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
+                            Auto Parts
+                        </span><br />
+                        Trading
                     </h1>
-                    <p className="text-xl md:text-3xl text-gray-400 font-light tracking-wide">
+                    <p className="text-xl md:text-3xl text-gray-400 font-light tracking-wide max-w-3xl mx-auto">
                         자동차 물품 거래의 새로운 기준
                     </p>
                 </motion.div>
 
+                {/* Action Buttons */}
                 <div className="w-full flex flex-row justify-center items-center gap-[150px] px-4 md:px-8 max-w-[1600px] mx-auto">
                     {/* AI Smart Search */}
                     <motion.button
                         whileHover={{ scale: 1.05, y: -5 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={onOpenChat}
+                        onClick={() => navigate('/ai-search')}
                         className="group relative w-[240px] h-[120px] rounded-[2rem] bg-white/5 backdrop-blur-sm border-none transition-all duration-500 overflow-hidden flex flex-col items-center justify-center p-4 text-left hover:shadow-[0_0_50px_rgba(59,130,246,0.25)] hover:bg-white/10 cursor-pointer"
                     >
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -88,7 +89,7 @@ const Hero = ({ onOpenChat, onOpenContract }) => {
                     </motion.button>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
