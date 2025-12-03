@@ -71,7 +71,7 @@ const AllParts = () => {
               className="flex items-center gap-6"
             >
               {/* 3. Add 버튼: 리스트 사각형 왼쪽, 칸 밖 */}
-              <button className="flex flex-col items-center justify-center gap-1 w-20 h-20 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors -ml-28">
+              <button className="flex flex-col items-center justify-center gap-1 w-20 h-20 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors -ml-32">
                 <ShoppingCart className="w-7 h-7 text-white" />
                 <span className="text-xs font-medium text-gray-300">
                   Add
