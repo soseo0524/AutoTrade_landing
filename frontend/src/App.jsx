@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import AISearch from './pages/AISearch';
 import AllParts from './pages/AllParts';
+import Cart from './pages/Cart';
+import MyPage from './pages/MyPage';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/ai-search" element={<AISearch />} />
             <Route path="/all-parts" element={<AllParts />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/mypage" element={<MyPage />} />
           </Routes>
         </div>
       </div>

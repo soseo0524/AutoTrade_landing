@@ -18,10 +18,9 @@ const Navbar = ({ onOpenChat }) => {
                         </div>
                         <div className="hidden md:block">
                             <div className="ml-10 flex items-baseline space-x-4">
-                                <a href="#" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                                <a href="#" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Marketplace</a>
-                                <a href="#" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Solutions</a>
-                                <a href="#" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                                <a href="/" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                                <a href="/mypage" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">MyPage</a>
+                                <a href="/about" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
                             </div>
                         </div>
                     </div>
@@ -56,10 +55,9 @@ const Navbar = ({ onOpenChat }) => {
                     className="md:hidden bg-secondary border-b border-white/10"
                 >
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                        <a href="#" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
-                        <a href="#" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Marketplace</a>
-                        <a href="#" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Solutions</a>
-                        <a href="#" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                        <a href="/" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                        <a href="/mypage" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">MyPage</a>
+                        <a href="/about" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
                         <button
                             onClick={() => {
                                 setIsOpen(false);

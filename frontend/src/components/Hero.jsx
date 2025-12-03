@@ -47,19 +47,20 @@ const Hero = ({ onOpenContract }) => {
                         </div>
                     </motion.button>
 
-                    {/* My Car Garage */}
+                    {/* Cart */}
                     <motion.button
                         whileHover={{ scale: 1.05, y: -5 }}
                         whileTap={{ scale: 0.95 }}
+                        onClick={() => navigate('/cart')}
                         className="group relative w-[240px] h-[120px] rounded-[2rem] bg-white/5 backdrop-blur-sm border-none transition-all duration-500 overflow-hidden flex flex-col items-center justify-center p-4 text-left hover:shadow-[0_0_50px_rgba(168,85,247,0.25)] hover:bg-white/10 cursor-pointer"
                     >
                         <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                         <div className="relative z-10 flex flex-col items-center text-center">
                             <div className="mb-3 p-3 rounded-full bg-white/5 group-hover:bg-white/10 transition-colors duration-500">
-                                <Car className="w-6 h-6 text-purple-400 group-hover:text-purple-300 transition-colors duration-500" />
+                                <ShoppingBag className="w-6 h-6 text-purple-400 group-hover:text-purple-300 transition-colors duration-500" />
                             </div>
-                            <h2 className="text-lg font-medium text-white tracking-wide transition-colors duration-300">My Car Garage</h2>
+                            <h2 className="text-lg font-medium text-white tracking-wide transition-colors duration-300">Cart</h2>
                         </div>
                     </motion.button>
 

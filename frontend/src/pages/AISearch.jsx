@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Sparkles, ArrowRight, Search, Mic, Camera, X, User } from 'lucide-react';
+import { Sparkles, ArrowRight, Search, Mic, Camera, X, User, ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
@@ -61,18 +61,19 @@ const AISearch = () => {
         <div className="min-h-screen text-white flex flex-col relative overflow-hidden">
             {/* Background Elements - Moved to App.jsx */}
 
-            {/* Close Button (Top Right) */}
-            <div className="absolute top-6 right-6 z-20">
+            {/* Header Section (Matches AllParts) */}
+            <div className="w-3/5 mx-auto mb-20 text-center relative z-20 mt-20">
                 <button
                     onClick={() => navigate('/')}
-                    className="p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white transition-colors"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center text-gray-400 hover:text-white transition-colors"
                 >
-                    <X className="w-6 h-6" />
+                    <ArrowLeft className="w-5 h-5 mr-2" />
+                    Back
                 </button>
             </div>
 
             {/* Main Content */}
-            <div className="relative z-10 flex-1 flex flex-col items-center justify-start pt-[20vh] px-4 w-full max-w-3xl mx-auto">
+            <div className="relative z-10 flex-1 flex flex-col items-center justify-start px-4 w-full max-w-3xl mx-auto">
 
                 {messages.length === 0 ? (
                     <div className="w-full flex flex-col items-center space-y-10">
