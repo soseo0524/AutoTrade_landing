@@ -65,21 +65,29 @@ const AllParts = () => {
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9 }}
-                            // [변경점 1] relative 추가: 내부의 날짜/버튼을 절대위치로 잡기 위함
-                            // items-center로 이미지와 텍스트 수직 정렬 맞춤
+                            // 카드 전체 컨테이너
                             className="group relative flex items-center gap-6 p-4 rounded-2xl bg-[#18181b] border border-white/5 hover:border-white/10 transition-all hover:bg-[#202023]"
                         >
-                            {/* 1. 이미지 */}
+                            {/* 1. 이미지 및 버튼 영역 */}
+                            {/* 버튼을 이 div 안으로 넣어서 이미지와 함께 관리합니다 */}
                             <div className="w-48 h-32 rounded-xl overflow-hidden bg-gray-800 flex-shrink-0 relative">
                                 <img src={part.image} alt={part.name} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
-                                <div className="absolute top-2 left-2 px-2 py-1 rounded-md bg-black/60 backdrop-blur-md text-xs font-medium border border-white/10">
+                                
+                                {/* 상태 태그 (왼쪽 상단) */}
+                                <div className="absolute top-2 left-2 px-2 py-1 rounded-md bg-black/60 backdrop-blur-md text-xs font-medium border border-white/10 text-white">
                                     {part.status}
                                 </div>
+
+                                {/* [핵심 변경] Add 버튼: 이미지 내부 왼쪽 하단에 배치 */}
+                                <button className="absolute bottom-2 left-2 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 backdrop-blur-md text-xs font-bold text-white transition-colors border border-white/10 z-10">
+                                    <ShoppingCart className="w-3 h-3" />
+                                    Add
+                                </button>
                             </div>
 
                             {/* 2. 텍스트 내용 */}
-                            {/* [변경점 2] pr-[160px]: 오른쪽 160px 공간을 비워둬서 글자가 버튼/날짜와 겹치지 않게 함 */}
-                            <div className="flex-1 min-w-0 pr-[160px]"> 
+                            {/* 오른쪽 여백(padding-right)은 날짜 공간만큼만 줍니다 */}
+                            <div className="flex-1 min-w-0 pr-24"> 
                                 <h3 className="text-xl font-semibold truncate mb-2">{part.name}</h3>
                                 <p className="text-gray-400 text-sm mb-3 line-clamp-2">
                                     High-quality authentic part. Verified by AutoTrade AI inspection system.
@@ -87,21 +95,12 @@ const AllParts = () => {
                                 <span className="text-2xl font-bold text-blue-400">{part.price}</span>
                             </div>
 
-                            {/* [변경점 3] 흰색 선 제거됨 (div 자체를 없애고 내용물만 따로 배치) */}
-
-                            {/* [변경점 4] 날짜 고정 (Absolute) */}
-                            {/* top-4, right-4: 카드 오른쪽 위 모서리에 고정 */}
+                            {/* 3. 날짜 (우측 상단 고정) */}
+                            {/* 버튼이 사라졌으므로 오른쪽 공간은 오직 날짜의 것! */}
                             <span className="absolute top-4 right-4 text-sm text-gray-500 font-mono">
                                 {part.date}
                             </span>
 
-                            {/* [변경점 5] 버튼 고정 (Absolute) */}
-                            {/* bottom-4, right-4: 카드 오른쪽 아래 모서리에 고정 */}
-                            {/* w-32: 버튼 너비 고정 */}
-                            <button className="absolute bottom-4 right-4 flex items-center justify-center gap-2 w-32 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm font-medium transition-colors">
-                                <ShoppingCart className="w-4 h-4" />
-                                Add
-                            </button>
                         </motion.div>
                     ))}
                 </AnimatePresence>
