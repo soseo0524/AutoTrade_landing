@@ -56,7 +56,6 @@ const AllParts = () => {
                 </button>
             </div>
 
-            {/* 왼쪽 패딩 제거 (이제 버튼이 밖으로 안 나가니까요) */}
             <div className="w-3/5 mx-auto flex flex-col gap-6">
                 <AnimatePresence mode='popLayout'>
                     {parts.map((part) => (
@@ -66,42 +65,47 @@ const AllParts = () => {
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9 }}
-                            className="group relative flex items-center gap-6 p-4 rounded-2xl bg-[#18181b] border border-white/5 hover:border-white/10 transition-all hover:bg-[#202023]"
+                            // overflow-hidden: 내부 박스들의 border-radius를 위해 추가
+                            className="group flex items-stretch rounded-2xl bg-[#18181b] border border-white/5 hover:border-white/10 transition-all overflow-hidden"
                         >
-                            {/* 1. 이미지 영역 (버튼 포함) */}
-                            <div className="w-48 h-32 rounded-xl overflow-hidden bg-gray-800 flex-shrink-0 relative group">
-                                <img src={part.image} alt={part.name} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
-                                
-                                {/* 상태 태그 */}
-                                <div className="absolute top-2 left-2 px-2 py-1 rounded-md bg-black/60 backdrop-blur-md text-xs font-medium border border-white/10 z-10">
-                                    {part.status}
+                            {/* [1구역] 이미지 박스 */}
+                            {/* p-4: 이미지 주변 여백 */}
+                            <div className="p-4 flex-shrink-0">
+                                <div className="w-48 h-32 rounded-xl overflow-hidden bg-gray-800 relative">
+                                    <img src={part.image} alt={part.name} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
+                                    <div className="absolute top-2 left-2 px-2 py-1 rounded-md bg-black/60 backdrop-blur-md text-xs font-medium border border-white/10 z-10">
+                                        {part.status}
+                                    </div>
                                 </div>
-
-                                {/* [수정됨] Add 버튼 (이미지 중앙의 큰 아이콘) */}
-                                <button 
-                                    className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition-all cursor-pointer"
-                                    aria-label="Add to cart"
-                                >
-                                    {/* 아이콘 크기 60%, 기본 회색, 호버시 흰색+확대 */}
-                                    <ShoppingCart className="w-[60%] h-[60%] text-gray-500 group-hover:text-white group-hover:scale-110 transition-all duration-300" />
-                                </button>
                             </div>
 
-                            {/* 2. 텍스트 내용 */}
-                            <div className="flex-1 min-w-0 flex flex-col justify-center">
+                            {/* [2구역] 설명 박스 (가운데) */}
+                            {/* flex-1: 남은 공간 다 차지 */}
+                            <div className="flex-1 flex flex-col justify-center py-4 pr-6 min-w-0">
                                 <span className="text-sm text-gray-500 font-mono mb-1 block">
                                     {part.date}
                                 </span>
-
                                 <h3 className="text-xl font-semibold truncate mb-2 text-white" title={part.name}>
                                     {part.name}
                                 </h3>
-
                                 <p className="text-gray-400 text-sm mb-3 line-clamp-2">
                                     High-quality authentic part. Verified by AutoTrade AI inspection system.
                                 </p>
                                 <span className="text-2xl font-bold text-blue-400">{part.price}</span>
                             </div>
+
+                            {/* [3구역] 장바구니 박스 (오른쪽 끝) */}
+                            {/* w-32: 고정 너비 */}
+                            {/* border-l: 왼쪽 설명 박스와 구분선 */}
+                            <button 
+                                className="w-32 flex flex-col items-center justify-center border-l border-white/5 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group/cart"
+                            >
+                                <div className="p-3 rounded-full bg-white/10 group-hover/cart:bg-white/20 transition-colors mb-2">
+                                    <ShoppingCart className="w-6 h-6 text-gray-300 group-hover/cart:text-white" />
+                                </div>
+                                <span className="text-xs font-bold text-gray-400 group-hover/cart:text-white">ADD</span>
+                            </button>
+
                         </motion.div>
                     ))}
                 </AnimatePresence>
