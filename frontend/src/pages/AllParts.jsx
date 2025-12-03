@@ -72,8 +72,8 @@ const AllParts = () => {
               className="flex items-center gap-6"
             >
               {/* 3. Add 버튼: 리스트 사각형 왼쪽, 칸 밖 */}
-              <button className="flex flex-col items-center justify-center gap-1 w-20 h-20 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors">
-                <ShoppingCart className="w-6 h-6 text-white" />
+              <button className="flex flex-col items-center justify-center gap-1 w-20 h-20 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors -ml-24">
+                <ShoppingCart className="w-7 h-7 text-white" />
                 <span className="text-xs font-medium text-gray-300">
                   Add
                 </span>
@@ -102,7 +102,7 @@ const AllParts = () => {
 
                   {/* 1. 이름 길면 ... 로 잘리게 */}
                   <h3
-                    className="text-xl font-semibold mb-2 text-white truncate"
+                    className="text-xl font-semibold mb-2 text-white block truncate"
                     title={part.name}
                   >
                     {part.name}
