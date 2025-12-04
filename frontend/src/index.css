@@ -30,3 +30,38 @@ body {
   margin: 0 auto;
   text-align: center;
 }
+
+.neon-button-medium {
+  background: transparent;
+  border: 2px solid #00f7ff;
+  color: #00f7ff;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 0 5px rgba(0, 247, 255, 0.8),
+    0 0 15px rgba(0, 247, 255, 0.4),
+    inset 0 0 5px rgba(0, 247, 255, 0.2);
+}
+
+.neon-button-medium svg,
+.neon-button-medium span,
+.neon-button-medium h2 {
+  filter: drop-shadow(0 0 3px rgba(0, 247, 255, 0.8));
+  transition: all 0.3s ease;
+}
+
+.neon-button-medium:hover {
+  background: rgba(0, 247, 255, 0.15);
+  color: white;
+  box-shadow:
+    0 0 10px rgba(0, 247, 255, 1),
+    0 0 30px rgba(0, 247, 255, 0.6),
+    inset 0 0 10px rgba(0, 247, 255, 0.4);
+}
+
+.neon-button-medium:hover svg,
+.neon-button-medium:hover span,
+.neon-button-medium:hover h2 {
+  filter: drop-shadow(0 0 8px rgba(0, 247, 255, 1));
+  color: white;
+}

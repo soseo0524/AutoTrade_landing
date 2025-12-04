@@ -18,12 +18,12 @@ const Hero = ({ onOpenContract }) => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="text-center mb-[100px]"
+                    className="w-full text-left mb-[100px]"
                 >
-                    <h1 className="text-7xl md:text-[10rem] font-bold text-white mb-8 tracking-tighter leading-none">
+                    <h1 className="w-[50%] ml-[28%] text-[3vw] font-bold text-white mb-8 tracking-tighter leading-tight whitespace-nowrap">
                         Automated auto Parts Trading
                     </h1>
-                    <p className="text-xl md:text-3xl text-gray-400 font-light tracking-wide max-w-3xl mx-auto">
+                    <p className="text-xl md:text-3xl text-gray-400 font-light tracking-wide max-w-3xl mx-auto text-center">
                         자동차 물품 거래의 새로운 기준
                     </p>
                 </motion.div>
@@ -31,54 +31,39 @@ const Hero = ({ onOpenContract }) => {
                 {/* Action Buttons */}
                 <div className="w-full flex flex-row justify-center items-center gap-[150px] px-4 md:px-8 max-w-[1600px] mx-auto">
                     {/* AI Smart Search */}
+                    {/* AI Smart Search */}
                     <motion.button
-                        whileHover={{ scale: 1.05, y: -5 }}
+                        whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => navigate('/ai-search')}
-                        className="group relative w-[240px] h-[120px] rounded-[2rem] bg-white/5 backdrop-blur-sm border-none transition-all duration-500 overflow-hidden flex flex-col items-center justify-center p-4 text-left hover:shadow-[0_0_50px_rgba(59,130,246,0.25)] hover:bg-white/10 cursor-pointer"
+                        className="neon-button-medium w-[240px] h-[120px] flex flex-col items-center justify-center gap-3 cursor-pointer"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-                        <div className="relative z-10 flex flex-col items-center text-center pointer-events-none">
-                            <div className="mb-3 p-3 rounded-full bg-white/5 group-hover:bg-white/10 transition-colors duration-500">
-                                <Sparkles className="w-6 h-6 text-blue-400 group-hover:text-blue-300 transition-colors duration-500" />
-                            </div>
-                            <h2 className="text-lg font-medium text-white tracking-wide transition-colors duration-300">AI Smart Search</h2>
-                        </div>
+                        <Sparkles className="w-8 h-8" />
+                        <h2 className="text-xl font-bold tracking-wide">AI Smart Search</h2>
                     </motion.button>
 
                     {/* Cart */}
+                    {/* Cart */}
                     <motion.button
-                        whileHover={{ scale: 1.05, y: -5 }}
+                        whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => navigate('/cart')}
-                        className="group relative w-[240px] h-[120px] rounded-[2rem] bg-white/5 backdrop-blur-sm border-none transition-all duration-500 overflow-hidden flex flex-col items-center justify-center p-4 text-left hover:shadow-[0_0_50px_rgba(168,85,247,0.25)] hover:bg-white/10 cursor-pointer"
+                        className="neon-button-medium w-[240px] h-[120px] flex flex-col items-center justify-center gap-3 cursor-pointer"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                        <div className="relative z-10 flex flex-col items-center text-center">
-                            <div className="mb-3 p-3 rounded-full bg-white/5 group-hover:bg-white/10 transition-colors duration-500">
-                                <ShoppingBag className="w-6 h-6 text-purple-400 group-hover:text-purple-300 transition-colors duration-500" />
-                            </div>
-                            <h2 className="text-lg font-medium text-white tracking-wide transition-colors duration-300">Cart</h2>
-                        </div>
+                        <ShoppingBag className="w-8 h-8" />
+                        <h2 className="text-xl font-bold tracking-wide">Cart</h2>
                     </motion.button>
 
                     {/* All Parts */}
+                    {/* All Parts */}
                     <motion.button
-                        whileHover={{ scale: 1.05, y: -5 }}
+                        whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => navigate('/all-parts')}
-                        className="group relative w-[240px] h-[120px] rounded-[2rem] bg-white/5 backdrop-blur-sm border-none transition-all duration-500 overflow-hidden flex flex-col items-center justify-center p-4 text-left hover:shadow-[0_0_50px_rgba(236,72,153,0.25)] hover:bg-white/10 cursor-pointer"
+                        className="neon-button-medium w-[240px] h-[120px] flex flex-col items-center justify-center gap-3 cursor-pointer"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-transparent to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                        <div className="relative z-10 flex flex-col items-center text-center">
-                            <div className="mb-3 p-3 rounded-full bg-white/5 group-hover:bg-white/10 transition-colors duration-500">
-                                <Grid className="w-6 h-6 text-pink-400 group-hover:text-pink-300 transition-colors duration-500" />
-                            </div>
-                            <h2 className="text-lg font-medium text-white tracking-wide transition-colors duration-300">All Parts</h2>
-                        </div>
+                        <Grid className="w-8 h-8" />
+                        <h2 className="text-xl font-bold tracking-wide">All Parts</h2>
                     </motion.button>
                 </div>
             </div>
