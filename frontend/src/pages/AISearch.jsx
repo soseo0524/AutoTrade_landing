@@ -96,7 +96,7 @@ const AISearch = ({ addToCart }) => {
             {/* Background Elements - Moved to App.jsx */}
 
             {/* Header Section (Matches AllParts) */}
-            <div className="w-3/5 mx-auto mb-20 text-center relative z-20 mt-20">
+            <div className="w-3/5 mx-auto text-center relative z-20">
                 <button
                     onClick={() => navigate('/')}
                     style={{
@@ -115,16 +115,16 @@ const AISearch = ({ addToCart }) => {
             </div>
 
             {/* Main Content */}
-            <div className="relative z-10 flex-1 flex flex-col items-center justify-start px-4 w-full max-w-3xl mx-auto">
+            <div className={`relative z-10 flex-1 flex flex-col items-center px-4 w-full max-w-3xl mx-auto ${messages.length === 0 ? 'justify-center' : 'justify-start'}`}>
 
                 {messages.length === 0 ? (
-                    <div className="w-full flex flex-col items-center space-y-10">
+                    <div className="w-full flex flex-col items-center space-y-18">
                         {/* Logo / Title */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="flex flex-col items-center gap-6"
+                            className="flex flex-col items-center gap-4"
                         >
                             <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
