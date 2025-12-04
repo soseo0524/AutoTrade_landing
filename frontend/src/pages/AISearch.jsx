@@ -130,8 +130,8 @@ const AISearch = ({ addToCart }) => {
                                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
                                     <Sparkles className="w-6 h-6 text-white" />
                                 </div>
-                                <h1 className="text-[100px] md:text-[130px] font-bold tracking-tighter text-white">
-                                    AutoTrade.AI
+                                <h1 className="text-[100px] md:text-[130px] font-bold tracking-tighter text-white leading-none">
+                                    AI Smart Search
                                 </h1>
                             </div>
                             <p className="text-2xl text-gray-400 font-light tracking-wide mt-[1px]">
