@@ -118,13 +118,13 @@ const AISearch = ({ addToCart }) => {
             <div className={`relative z-10 flex-1 flex flex-col items-center px-4 w-full max-w-3xl mx-auto ${messages.length === 0 ? 'justify-center' : 'justify-start'}`}>
 
                 {messages.length === 0 ? (
-                    <div className="w-full flex flex-col items-center space-y-18">
+                    <div className="w-full flex flex-col items-center space-y-40">
                         {/* Logo / Title */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="flex flex-col items-center gap-4"
+                            className="flex flex-col items-center gap-0"
                         >
                             <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
@@ -134,7 +134,7 @@ const AISearch = ({ addToCart }) => {
                                     AutoTrade.AI
                                 </h1>
                             </div>
-                            <p className="text-2xl text-gray-400 font-light tracking-wide">
+                            <p className="text-2xl text-gray-400 font-light tracking-wide mt-[-10px]">
                                 원하는 부품을 검색하세요
                             </p>
                         </motion.div>
