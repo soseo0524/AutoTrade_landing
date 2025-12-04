@@ -3,11 +3,11 @@ import { ArrowLeft, RefreshCw, ShoppingCart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const AllParts = () => {
+const AllParts = ({ addToCart }) => {
     const navigate = useNavigate();
     const [isRefreshing, setIsRefreshing] = useState(false);
 
-    // Initial mock data
+    // Initial mock data - sorted by date (newest first)
     const [parts, setParts] = useState([
         { id: 1, name: 'Porsche 911 GT3 RS Wing', date: '2025-12-03', price: '₩4,500,000', image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200', status: 'New' },
         { id: 2, name: 'Brembo Carbon Ceramic Brakes', date: '2025-12-02', price: '₩12,000,000', image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200', status: 'New' },
@@ -32,27 +32,7 @@ const AllParts = () => {
         }, 1000);
     };
 
-    const addToCart = (part) => {
-        // 가격 문자열에서 숫자만 추출 (예: "₩4,500,000" -> 4500000)
-        const priceNumber = parseInt(part.price.replace(/[^0-9]/g, ''), 10);
-
-        const newItem = {
-            ...part,
-            price: priceNumber
-        };
-
-        // 기존 장바구니 아이템 가져오기
-        const existingCart = JSON.parse(localStorage.getItem('cartItems')) || [];
-
-        // 새 아이템 추가
-        const updatedCart = [...existingCart, newItem];
-
-        // localStorage 업데이트
-        localStorage.setItem('cartItems', JSON.stringify(updatedCart));
-
-        // 사용자에게 알림 (임시)
-        alert(`${part.name} added to cart!`);
-    };
+    // Local addToCart removed - using prop from App.jsx
 
     return (
         <div className="min-h-screen text-white pt-20 pb-20 relative overflow-y-auto">
@@ -120,7 +100,11 @@ const AllParts = () => {
                             {/* w-32: 고정 너비 */}
                             {/* border-l: 왼쪽 설명 박스와 구분선 */}
                             <button
-                                onClick={() => addToCart(part)}
+                                onClick={() => {
+                                    // 가격 문자열에서 숫자만 추출
+                                    const priceNumber = parseInt(part.price.replace(/[^0-9]/g, ''), 10);
+                                    addToCart({ ...part, price: priceNumber });
+                                }}
                                 className="w-32 flex flex-col items-center justify-center border-l border-white/5 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group/cart"
                             >
                                 <div className="p-3 rounded-full bg-white/10 group-hover/cart:bg-white/20 transition-colors mb-2">

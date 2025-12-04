@@ -3,21 +3,12 @@ import { ArrowLeft, ShoppingBag, Trash2, CreditCard } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Cart = () => {
+const Cart = ({ cartItems, removeFromCart }) => {
     const navigate = useNavigate();
 
-    // Initialize cart from localStorage
-    const [cartItems, setCartItems] = useState(() => {
-        const savedCart = localStorage.getItem('cartItems');
-        return savedCart ? JSON.parse(savedCart) : [];
-    });
+    // Local state removed - using props from App.jsx
 
-    // Update localStorage whenever cart changes
-    const removeItem = (id) => {
-        const newItems = cartItems.filter(item => item.id !== id);
-        setCartItems(newItems);
-        localStorage.setItem('cartItems', JSON.stringify(newItems));
-    };
+    // removeItem function removed - using prop from App.jsx
 
     const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
 
@@ -80,7 +71,7 @@ const Cart = () => {
                                         {/* [수정 3] 휴지통 버튼: 박스 오른쪽 바깥으로 이동 */}
                                         {/* absolute -right-12: 오른쪽으로 48px 밖으로 밀어냄 */}
                                         <button
-                                            onClick={() => removeItem(item.id)}
+                                            onClick={() => removeFromCart(item.id)}
                                             className="absolute -right-12 top-1/2 -translate-y-1/2 p-2 text-gray-500 hover:text-red-400 transition-colors"
                                             title="Remove item"
                                         >

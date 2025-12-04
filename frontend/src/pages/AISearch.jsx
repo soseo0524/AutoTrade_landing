@@ -22,7 +22,7 @@ const MOCK_PRODUCTS = [
     }
 ];
 
-const AISearch = () => {
+const AISearch = ({ addToCart }) => {
     const navigate = useNavigate();
     const [input, setInput] = useState('');
     const [messages, setMessages] = useState([]);
@@ -38,14 +38,7 @@ const AISearch = () => {
     }, [messages, isTyping]);
 
     // Scenario State
-    const [queryCount, setQueryCount] = useState(0);
-
-    const addToCart = (product) => {
-        const currentCart = JSON.parse(localStorage.getItem('cartItems') || '[]');
-        const updatedCart = [...currentCart, { ...product, id: Date.now() }]; // Ensure unique ID for cart
-        localStorage.setItem('cartItems', JSON.stringify(updatedCart));
-        alert(`${product.name} added to cart!`);
-    };
+    // const [queryCount, setQueryCount] = useState(0); // Not used in text-based trigger
 
     const handleSend = async (text = input) => {
         if (!text.trim()) return;
