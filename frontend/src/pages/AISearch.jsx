@@ -37,6 +37,16 @@ const AISearch = () => {
         scrollToBottom();
     }, [messages, isTyping]);
 
+    // Scenario State
+    const [queryCount, setQueryCount] = useState(0);
+
+    const addToCart = (product) => {
+        const currentCart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+        const updatedCart = [...currentCart, { ...product, id: Date.now() }]; // Ensure unique ID for cart
+        localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+        alert(`${product.name} added to cart!`);
+    };
+
     const handleSend = async (text = input) => {
         if (!text.trim()) return;
 
@@ -45,14 +55,45 @@ const AISearch = () => {
         setInput('');
         setIsTyping(true);
 
-        // Simulate AI response
+        // Scenario Logic
+        // Remove queryCount dependency to allow specific text triggers regardless of order
+        // const currentQueryIndex = queryCount; 
+        // setQueryCount(prev => prev + 1);
+
         setTimeout(() => {
             setIsTyping(false);
-            const aiResponse = {
-                type: 'ai',
-                text: `I found some excellent options for "${text}". These parts are compatible with your vehicle specifications.`,
-                products: MOCK_PRODUCTS
-            };
+            let aiResponse;
+
+            // Check for Porsche/2025 keyword for Scenario 2
+            if (text.toLowerCase().includes("porsche") || text.includes("2025")) {
+                // Scenario 2: Porsche (Similar Match - 2023 recommendation for 2025 search)
+                aiResponse = {
+                    type: 'ai',
+                    text: `완벽하게 일치하는 부품을 찾지 못했습니다! 대신 호환 가능한 2023년형 모델을 추천해 드립니다.`,
+                    products: [{
+                        id: 101,
+                        name: "Porsche 911 GT3 RS Wing (2023)",
+                        price: "₩4,500,000",
+                        rating: 5.0,
+                        compatibility: "Compatible (2023 Model)",
+                        image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200"
+                    }]
+                };
+            } else {
+                // Scenario 1: Brembo (Exact Match) - Default for other queries
+                aiResponse = {
+                    type: 'ai',
+                    text: `완벽하게 일치하는 부품을 찾았습니다!`,
+                    products: [{
+                        id: 102,
+                        name: "Brembo Carbon Ceramic Brakes",
+                        price: "₩12,000,000",
+                        rating: 4.9,
+                        compatibility: "Exact Match",
+                        image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200"
+                    }]
+                };
+            }
             setMessages(prev => [...prev, aiResponse]);
         }, 1500);
     };
@@ -170,6 +211,15 @@ const AISearch = () => {
                                                                         <span>★ {product.rating}</span>
                                                                     </div>
                                                                 </div>
+                                                                <button
+                                                                    onClick={(e) => {
+                                                                        e.stopPropagation();
+                                                                        addToCart(product);
+                                                                    }}
+                                                                    className="w-full mt-3 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm font-medium transition-colors"
+                                                                >
+                                                                    Add to Cart
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     ))}

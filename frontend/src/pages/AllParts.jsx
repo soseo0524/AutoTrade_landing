@@ -32,6 +32,28 @@ const AllParts = () => {
         }, 1000);
     };
 
+    const addToCart = (part) => {
+        // 가격 문자열에서 숫자만 추출 (예: "₩4,500,000" -> 4500000)
+        const priceNumber = parseInt(part.price.replace(/[^0-9]/g, ''), 10);
+
+        const newItem = {
+            ...part,
+            price: priceNumber
+        };
+
+        // 기존 장바구니 아이템 가져오기
+        const existingCart = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // 새 아이템 추가
+        const updatedCart = [...existingCart, newItem];
+
+        // localStorage 업데이트
+        localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+
+        // 사용자에게 알림 (임시)
+        alert(`${part.name} added to cart!`);
+    };
+
     return (
         <div className="min-h-screen text-white pt-20 pb-20 relative overflow-y-auto">
             <div className="w-3/5 mx-auto mb-20 text-center relative">
@@ -97,7 +119,8 @@ const AllParts = () => {
                             {/* [3구역] 장바구니 박스 (오른쪽 끝) */}
                             {/* w-32: 고정 너비 */}
                             {/* border-l: 왼쪽 설명 박스와 구분선 */}
-                            <button 
+                            <button
+                                onClick={() => addToCart(part)}
                                 className="w-32 flex flex-col items-center justify-center border-l border-white/5 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group/cart"
                             >
                                 <div className="p-3 rounded-full bg-white/10 group-hover/cart:bg-white/20 transition-colors mb-2">
@@ -105,7 +128,6 @@ const AllParts = () => {
                                 </div>
                                 <span className="text-xs font-bold text-gray-400 group-hover/cart:text-white">ADD</span>
                             </button>
-
                         </motion.div>
                     ))}
                 </AnimatePresence>

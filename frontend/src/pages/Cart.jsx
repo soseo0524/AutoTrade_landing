@@ -6,32 +6,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Cart = () => {
     const navigate = useNavigate();
 
-    const [cartItems, setCartItems] = useState([
-        { 
-            id: 1, 
-            name: 'Porsche 911 GT3 RS Wing', 
-            category: 'Exterior Parts',
-            price: 4500000, 
-            image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200' 
-        },
-        { 
-            id: 2, 
-            name: 'Brembo Carbon Ceramic Brakes', 
-            category: 'Performance',
-            price: 12000000, 
-            image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200' 
-        },
-    ]);
+    // Initialize cart from localStorage
+    const [cartItems, setCartItems] = useState(() => {
+        const savedCart = localStorage.getItem('cartItems');
+        return savedCart ? JSON.parse(savedCart) : [];
+    });
 
+    // Update localStorage whenever cart changes
     const removeItem = (id) => {
-        setCartItems(cartItems.filter(item => item.id !== id));
+        const newItems = cartItems.filter(item => item.id !== id);
+        setCartItems(newItems);
+        localStorage.setItem('cartItems', JSON.stringify(newItems));
     };
 
     const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
 
     return (
         <div className="min-h-screen text-white pt-44 pb-20 relative overflow-y-auto">
-            
+
             <button
                 onClick={() => navigate('/')}
                 style={{
@@ -51,14 +43,14 @@ const Cart = () => {
             <div className="w-3/5 mx-auto">
                 {/* [수정 1] justify-center 추가: 제목 중앙 정렬 */}
                 <h1 className="text-4xl font-bold mb-8 flex items-center justify-center gap-3">
-                    Your Cart 
+                    Your Cart
                     <span className="text-xl font-normal text-gray-500">({cartItems.length} items)</span>
                 </h1>
 
                 {cartItems.length > 0 ? (
                     // [수정 2] gap-12: 휴지통 버튼 공간 확보를 위해 리스트와 요약창 사이 간격을 넓힘
                     <div className="flex flex-col lg:flex-row gap-12">
-                        
+
                         {/* 리스트 영역 */}
                         <div className="flex-1 flex flex-col gap-4">
                             <AnimatePresence>
@@ -87,7 +79,7 @@ const Cart = () => {
 
                                         {/* [수정 3] 휴지통 버튼: 박스 오른쪽 바깥으로 이동 */}
                                         {/* absolute -right-12: 오른쪽으로 48px 밖으로 밀어냄 */}
-                                        <button 
+                                        <button
                                             onClick={() => removeItem(item.id)}
                                             className="absolute -right-12 top-1/2 -translate-y-1/2 p-2 text-gray-500 hover:text-red-400 transition-colors"
                                             title="Remove item"
@@ -131,7 +123,7 @@ const Cart = () => {
                         </div>
                         <h2 className="text-2xl font-bold mb-2">Your cart is empty</h2>
                         <p className="text-gray-400 mb-8">Looks like you haven't added any parts yet.</p>
-                        <button 
+                        <button
                             onClick={() => navigate('/all-parts')}
                             className="px-8 py-3 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-colors"
                         >
