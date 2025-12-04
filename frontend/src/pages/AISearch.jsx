@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Sparkles, ArrowRight, Search, Mic, Camera, X, User, ArrowLeft } from 'lucide-react';
+import { Sparkles, ArrowRight, Search, Mic, Camera, X, User, ArrowLeft, Disc, Wrench, Zap, Droplet } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
@@ -115,7 +115,7 @@ const AISearch = ({ addToCart }) => {
             </div>
 
             {/* Main Content */}
-            <div className={`relative z-10 flex-1 flex flex-col items-center px-4 w-full max-w-3xl mx-auto ${messages.length === 0 ? 'justify-start' : 'justify-start'}`}>
+            <div className={`relative z-10 flex-1 flex flex-col items-center px-4 w-full max-w-6xl mx-auto ${messages.length === 0 ? 'justify-start' : 'justify-start'}`}>
 
                 {messages.length === 0 ? (
                     <div className="w-full flex flex-col items-center">
@@ -124,17 +124,17 @@ const AISearch = ({ addToCart }) => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="flex flex-col items-center mt-[180px]"
+                            className="flex flex-col items-center mt-[160px]"
                         >
                             <div className="flex items-center gap-3">
-                                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
-                                    <Sparkles className="w-[22px] h-[22px] text-white" />
+                                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+                                    <Sparkles className="w-5 h-5 text-white" />
                                 </div>
-                                <h1 className="text-[90px] md:text-[117px] font-bold tracking-tighter text-white leading-none">
+                                <h1 className="text-[81px] md:text-[105px] font-bold tracking-tighter text-white leading-none">
                                     AI Smart Search
                                 </h1>
                             </div>
-                            <p className="text-[22px] text-gray-400 font-light tracking-wide mt-[1px]">
+                            <p className="text-[22px] text-gray-400 font-light tracking-wide mt-[-30px]">
                                 원하는 부품을 검색하세요
                             </p>
                         </motion.div>
@@ -148,7 +148,7 @@ const AISearch = ({ addToCart }) => {
                             className="w-[60%] relative group mt-[25px]"
                         >
                             {/* Search Bar */}
-                            <div className="relative flex items-center w-full bg-[#202124] border border-gray-700 hover:bg-[#303134] hover:border-gray-600 hover:shadow-lg rounded-full transition-all duration-200 pl-[50px] pr-6 py-4">
+                            <div className="relative flex items-center w-full bg-[#202124] border border-gray-700 hover:bg-[#303134] hover:border-gray-600 hover:shadow-lg rounded-full transition-all duration-200 pl-[50px] pr-6 py-[18px]">
                                 {/* Search Icon */}
                                 <Search className="w-5 h-5 text-gray-400 mr-4" />
 
@@ -175,6 +175,30 @@ const AISearch = ({ addToCart }) => {
                                 </div>
                             </div>
                         </motion.form>
+
+                        {/* Example Question Tabs */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="mt-[46px] flex flex-wrap justify-center gap-14"
+                        >
+                            {[
+                                { icon: Disc, text: "포르쉐 911 브레이크 세트", color: "text-red-400" },
+                                { icon: Wrench, text: "BMW M4 배기 튜닝", color: "text-orange-400" },
+                                { icon: Zap, text: "벤츠 AMG 고성능 배터리", color: "text-yellow-400" },
+                                { icon: Droplet, text: "아우디 RS5 엔진 오일", color: "text-blue-400" }
+                            ].map((item, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => handleSend(item.text)}
+                                    className="flex items-center gap-2 px-5 py-3 rounded-full bg-[#202124] border border-gray-700 hover:bg-[#303134] hover:border-gray-500 transition-all text-gray-300 hover:text-white text-sm font-medium mx-6 my-2"
+                                >
+                                    <item.icon className={`w-4 h-4 ${item.color}`} />
+                                    <span>{item.text}</span>
+                                </button>
+                            ))}
+                        </motion.div>
                     </div>
                 ) : (
                     /* Chat Interface (When messages exist) */
