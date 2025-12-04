@@ -181,18 +181,20 @@ const AISearch = ({ addToCart }) => {
                     <div className="w-full h-full flex flex-col max-w-5xl pt-20 pb-10">
                         <div className="flex-1 overflow-y-auto space-y-8 pr-4 scrollbar-thin scrollbar-thumb-white/10">
                             {messages.map((msg, idx) => (
-                                <div key={idx} className={`flex gap-4 ${msg.type === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
+                                <div key={idx} className={`flex gap-4 ${msg.type === 'user' ? 'flex-row-reverse' : 'flex-col items-center w-full'}`}>
                                     <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${msg.type === 'user' ? 'bg-blue-600' : 'bg-gradient-to-br from-blue-500 to-purple-600'}`}>
                                         {msg.type === 'user' ? <User className="w-5 h-5 text-white" /> : <Sparkles className="w-5 h-5 text-white" />}
                                     </div>
-                                    <div className={`flex-1 max-w-[80%] space-y-2`}>
-                                        <div className="text-sm text-gray-400 ml-1">{msg.type === 'user' ? 'You' : 'AI Assistant'}</div>
-                                        <div className={`rounded-2xl px-6 py-4 text-lg leading-relaxed ${msg.type === 'user' ? 'bg-white/10 text-white' : 'text-gray-200'}`}>
+                                    <div className={`flex-1 max-w-[80%] space-y-2 ${msg.type === 'ai' ? 'flex flex-col items-center' : ''}`}>
+                                        <div className={`text-sm text-gray-400 ml-1 ${msg.type === 'ai' ? 'text-center' : ''}`}>
+                                            {msg.type === 'user' ? 'You' : 'AI Assistant'}
+                                        </div>
+                                        <div className={`rounded-2xl px-6 py-4 text-lg leading-relaxed ${msg.type === 'user' ? 'bg-white/10 text-white' : 'text-gray-200 text-center w-full'}`}>
                                             <p>{msg.text}</p>
                                             {msg.products && (
-                                                <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                                <div className="mt-6 flex flex-wrap justify-center gap-4">
                                                     {msg.products.map(product => (
-                                                        <div key={product.id} className="bg-white/5 rounded-xl overflow-hidden hover:bg-white/10 transition-all cursor-pointer group border border-white/5 hover:border-blue-500/30">
+                                                        <div key={product.id} className="w-64 bg-white/5 rounded-xl overflow-hidden hover:bg-white/10 transition-all cursor-pointer group border border-white/5 hover:border-blue-500/30 text-left">
                                                             <div className="aspect-video bg-black/40 relative overflow-hidden">
                                                                 <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                                                             </div>
