@@ -127,14 +127,14 @@ const AISearch = ({ addToCart }) => {
                             className="flex flex-col items-center mt-[180px]"
                         >
                             <div className="flex items-center gap-3">
-                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
-                                    <Sparkles className="w-6 h-6 text-white" />
+                                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+                                    <Sparkles className="w-[22px] h-[22px] text-white" />
                                 </div>
-                                <h1 className="text-[100px] md:text-[130px] font-bold tracking-tighter text-white leading-none">
+                                <h1 className="text-[90px] md:text-[117px] font-bold tracking-tighter text-white leading-none">
                                     AI Smart Search
                                 </h1>
                             </div>
-                            <p className="text-2xl text-gray-400 font-light tracking-wide mt-[1px]">
+                            <p className="text-[22px] text-gray-400 font-light tracking-wide mt-[1px]">
                                 원하는 부품을 검색하세요
                             </p>
                         </motion.div>
