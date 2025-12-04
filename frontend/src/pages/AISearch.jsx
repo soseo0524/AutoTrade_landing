@@ -124,7 +124,7 @@ const AISearch = ({ addToCart }) => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="flex flex-col items-center mt-[200px]"
+                            className="flex flex-col items-center mt-[180px]"
                         >
                             <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
@@ -134,7 +134,7 @@ const AISearch = ({ addToCart }) => {
                                     AutoTrade.AI
                                 </h1>
                             </div>
-                            <p className="text-2xl text-gray-400 font-light tracking-wide mt-[5px]">
+                            <p className="text-2xl text-gray-400 font-light tracking-wide mt-[1px]">
                                 원하는 부품을 검색하세요
                             </p>
                         </motion.div>
