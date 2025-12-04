@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Sparkles, ArrowRight, Search, Mic, Camera, X, User, ArrowLeft, Disc, Wrench, Zap, Droplet } from 'lucide-react';
+import bgImage from '../assets/aisearch_bg.png';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
@@ -93,7 +94,15 @@ const AISearch = ({ addToCart }) => {
 
     return (
         <div className="min-h-screen text-white flex flex-col relative overflow-hidden">
-            {/* Background Elements - Moved to App.jsx */}
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0 overflow-hidden">
+                <img src={bgImage} alt="Background" className="w-full h-full object-cover opacity-50 scale-[1.2]" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+                <div
+                    className="absolute inset-0"
+                    style={{ background: 'linear-gradient(to right, transparent 50%, #09090b 90%)' }}
+                />
+            </div>
 
             {/* Header Section (Matches AllParts) */}
             <div className="w-3/5 mx-auto text-center relative z-20">
@@ -181,7 +190,7 @@ const AISearch = ({ addToCart }) => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 }}
-                            className="mt-[46px] flex flex-wrap justify-center gap-14"
+                            className="mt-[46px] flex flex-wrap justify-center gap-12"
                         >
                             {[
                                 { icon: Disc, text: "포르쉐 911 브레이크 세트", color: "text-red-400" },
@@ -192,7 +201,7 @@ const AISearch = ({ addToCart }) => {
                                 <button
                                     key={index}
                                     onClick={() => handleSend(item.text)}
-                                    className="flex items-center gap-2 px-5 py-3 rounded-full bg-[#202124] border border-gray-700 hover:bg-[#303134] hover:border-gray-500 transition-all text-gray-300 hover:text-white text-sm font-medium mx-6 my-2"
+                                    className="flex items-center gap-2 px-5 py-3 rounded-full bg-[#202124] border border-gray-700 hover:bg-[#303134] hover:border-gray-500 transition-all text-gray-300 hover:text-white text-sm font-medium"
                                 >
                                     <item.icon className={`w-4 h-4 ${item.color}`} />
                                     <span>{item.text}</span>

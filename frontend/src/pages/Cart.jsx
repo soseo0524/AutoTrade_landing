@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowLeft, ShoppingBag, Trash2, CreditCard } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import bgImage from '../assets/aisearch_bg.png';
 
 const Cart = ({ cartItems, removeFromCart }) => {
     const navigate = useNavigate();
@@ -14,6 +15,15 @@ const Cart = ({ cartItems, removeFromCart }) => {
 
     return (
         <div className="min-h-screen text-white pt-44 pb-20 relative overflow-y-auto">
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0 overflow-hidden">
+                <img src={bgImage} alt="Background" className="w-full h-full object-cover opacity-50 scale-[1.2]" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+                <div
+                    className="absolute inset-0"
+                    style={{ background: 'linear-gradient(to right, transparent 50%, #09090b 90%)' }}
+                />
+            </div>
 
             <button
                 onClick={() => navigate('/')}
