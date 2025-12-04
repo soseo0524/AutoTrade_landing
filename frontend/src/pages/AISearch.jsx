@@ -115,26 +115,26 @@ const AISearch = ({ addToCart }) => {
             </div>
 
             {/* Main Content */}
-            <div className={`relative z-10 flex-1 flex flex-col items-center px-4 w-full max-w-3xl mx-auto ${messages.length === 0 ? 'justify-center' : 'justify-start'}`}>
+            <div className={`relative z-10 flex-1 flex flex-col items-center px-4 w-full max-w-3xl mx-auto ${messages.length === 0 ? 'justify-start' : 'justify-start'}`}>
 
                 {messages.length === 0 ? (
-                    <div className="w-full flex flex-col items-center space-y-40">
+                    <div className="w-full flex flex-col items-center">
                         {/* Logo / Title */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="flex flex-col items-center gap-0"
+                            className="flex flex-col items-center mt-[200px]"
                         >
                             <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
                                     <Sparkles className="w-6 h-6 text-white" />
                                 </div>
-                                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-white">
+                                <h1 className="text-[100px] md:text-[130px] font-bold tracking-tighter text-white">
                                     AutoTrade.AI
                                 </h1>
                             </div>
-                            <p className="text-2xl text-gray-400 font-light tracking-wide mt-[-10px]">
+                            <p className="text-2xl text-gray-400 font-light tracking-wide mt-[5px]">
                                 원하는 부품을 검색하세요
                             </p>
                         </motion.div>
@@ -145,7 +145,7 @@ const AISearch = ({ addToCart }) => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
                             onSubmit={(e) => { e.preventDefault(); handleSend(); }}
-                            className="w-[60%] relative group"
+                            className="w-[60%] relative group mt-[25px]"
                         >
                             {/* Search Bar */}
                             <div className="relative flex items-center w-full bg-[#202124] border border-gray-700 hover:bg-[#303134] hover:border-gray-600 hover:shadow-lg rounded-full transition-all duration-200 pl-[50px] pr-6 py-4">
