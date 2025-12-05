@@ -63,15 +63,25 @@ const AISearch = ({ addToCart }) => {
                 // Scenario 2: Porsche (Similar Match - 2023 recommendation for 2025 search)
                 aiResponse = {
                     type: 'ai',
-                    text: `완벽하게 일치하는 부품을 찾지 못했습니다! 대신 호환 가능한 2023년형 모델을 추천해 드립니다.`,
-                    products: [{
-                        id: 101,
-                        name: "Porsche 911 GT3 RS Wing (2023)",
-                        price: "₩4,500,000",
-                        rating: 5.0,
-                        compatibility: "Compatible (2023 Model)",
-                        image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200"
-                    }]
+                    text: `완벽하게 일치하는 부품을 찾지 못했습니다! 대신 호환 가능한 2023년형과 2022년형 모델을 추천해 드립니다.`,
+                    products: [
+                        {
+                            id: 101,
+                            name: "Porsche 911 GT3 RS Wing (2023)",
+                            price: "₩4,500,000",
+                            rating: 5.0,
+                            compatibility: "Compatible (2023 Model)",
+                            image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=300&h=200"
+                        },
+                        {
+                            id: 103,
+                            name: "Porsche 911 GT3 RS Wing (2022)",
+                            price: "₩4,200,000",
+                            rating: 4.8,
+                            compatibility: "Compatible (2022 Model)",
+                            image: "https://images.unsplash.com/photo-1503376763036-066120622c74?auto=format&fit=crop&q=80&w=300&h=200"
+                        }
+                    ]
                 };
             } else {
                 // Scenario 1: Brembo (Exact Match) - Default for other queries
@@ -212,7 +222,7 @@ const AISearch = ({ addToCart }) => {
                 ) : (
                     /* Chat Interface (When messages exist) */
                     <div className="w-full h-full flex flex-col max-w-5xl pt-20 pb-10">
-                        <div className="flex-1 overflow-y-auto space-y-8 pr-4 scrollbar-thin scrollbar-thumb-white/10">
+                        <div className="flex-1 overflow-y-auto space-y-8 pr-4 scrollbar-thin scrollbar-thumb-white/10 flex flex-col pt-[10vh]">
                             {messages.map((msg, idx) => (
                                 <div key={idx} className={`flex gap-4 ${msg.type === 'user' ? 'flex-row-reverse' : 'flex-col items-center w-full'}`}>
                                     <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${msg.type === 'user' ? 'bg-blue-600' : 'bg-gradient-to-br from-blue-500 to-purple-600'}`}>
@@ -225,9 +235,12 @@ const AISearch = ({ addToCart }) => {
                                         <div className={`rounded-2xl px-6 py-4 text-lg leading-relaxed ${msg.type === 'user' ? 'bg-white/10 text-white' : 'text-gray-200 text-center w-full'}`}>
                                             <p>{msg.text}</p>
                                             {msg.products && (
-                                                <div className="mt-6 flex flex-wrap justify-center gap-4">
-                                                    {msg.products.map(product => (
-                                                        <div key={product.id} className="w-64 bg-white/5 rounded-xl overflow-hidden hover:bg-white/10 transition-all cursor-pointer group border border-white/5 hover:border-blue-500/30 text-left">
+                                                <div className="mt-24 grid grid-cols-5 w-full gap-0">
+                                                    {msg.products.map((product, index) => (
+                                                        <div
+                                                            key={product.id}
+                                                            className={`w-full bg-white/5 rounded-xl overflow-hidden hover:bg-white/10 transition-all cursor-pointer group border border-white/5 hover:border-blue-500/30 text-left ${index === 0 ? 'col-start-2' : 'col-start-4'}`}
+                                                        >
                                                             <div className="aspect-video bg-black/40 relative overflow-hidden">
                                                                 <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                                                             </div>
@@ -272,21 +285,7 @@ const AISearch = ({ addToCart }) => {
                             <div ref={messagesEndRef} />
                         </div>
 
-                        {/* Bottom Input (only when chatting) */}
-                        <div className="py-6 border-t border-white/5 mt-4">
-                            <form onSubmit={(e) => { e.preventDefault(); handleSend(); }} className="relative max-w-4xl mx-auto">
-                                <input
-                                    type="text"
-                                    value={input}
-                                    onChange={(e) => setInput(e.target.value)}
-                                    placeholder="Ask follow-up questions..."
-                                    className="w-full bg-white/5 border border-white/10 rounded-full pl-6 pr-14 py-4 text-white focus:outline-none focus:bg-white/10 focus:border-blue-500/50 transition-all"
-                                />
-                                <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 bg-blue-600 rounded-full text-white hover:bg-blue-500 transition-colors">
-                                    <ArrowRight className="w-5 h-5" />
-                                </button>
-                            </form>
-                        </div>
+                        {/* Bottom Input removed by user request */}
                     </div>
                 )}
             </div>
