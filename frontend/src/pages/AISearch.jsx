@@ -79,7 +79,7 @@ const AISearch = ({ addToCart }) => {
                             price: "₩4,200,000",
                             rating: 4.8,
                             compatibility: "Compatible (2022 Model)",
-                            image: "https://images.unsplash.com/photo-1503376763036-066120622c74?auto=format&fit=crop&q=80&w=300&h=200"
+                            image: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=80&w=300&h=200"
                         }
                     ]
                 };
